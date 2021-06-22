@@ -10,6 +10,10 @@ var commonInitialismsReplacer *strings.Replacer
 var uncommonInitialismsReplacer *strings.Replacer
 
 func init() {
+	Init()
+}
+
+func Init() {
 	var commonInitialismsForReplacer []string
 	var uncommonInitialismsForReplacer []string
 	for _, initialism := range commonInitialisms {
@@ -18,4 +22,9 @@ func init() {
 	}
 	commonInitialismsReplacer = strings.NewReplacer(commonInitialismsForReplacer...)
 	uncommonInitialismsReplacer = strings.NewReplacer(uncommonInitialismsForReplacer...)
+}
+
+func SetCommon(common []string) {
+	commonInitialisms = common
+	Init()
 }
